@@ -1,22 +1,42 @@
 import logo from './logo.svg';
 import './App.css';
+import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 
 function App() {
+  const items = [
+    {
+      id: 0,
+      title: "Cobol"
+    },
+    {
+      id: 1,
+      title: "JavaScript"
+    },
+    {
+      id: 2,
+      title: "Basic"
+    },
+    {
+      id: 3,
+      title: "PHP"
+    },
+    {
+      id: 4,
+      title: "Java"
+    }
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div >
+      <header>
+        <ReactSearchAutocomplete
+            items={items}
+            fuseOptions={{keys: ["id", "title"]}}
+            resultStringKeyName="title"
+            showIcon={false}
+            styling={{ zIndex: 4 }} // To display it on top of the search box below
+            autoFocus
+          />
       </header>
     </div>
   );
